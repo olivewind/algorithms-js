@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo01</title>
+</head>
+<body>
+	<h1>demo01:栈的创建</h1>
+	<h4>请打开调试工具(F12)</h4>
+</body>
+</html>
+<script>
+
+//创建一个类来表示栈
+function Stack(){
+	//使用数组来保存栈里的元素
+	var items = [];
+	//压栈
+	this.push = function(element){
+		items.push(element);
+	};
+	//出栈
+	this.pop = function(){
+		return items.pop();
+	};
+	//返回栈顶元素
+	this.peek = function(){
+		return items[items.length - 1];
+	};
+	//判断栈是否为空
+	this.isEmpty = function(){
+		return items.length == 0;
+	};
+	//栈的元素个数
+	this.size = function(){
+		return items.length;
+	};
+	//清空栈
+	this.clear = function(){
+		items = [];
+	};
+	//输出全栈
+	this.print = function(){
+		console.log(items.toString());
+	};
+}
+// ----------------简单使用stack类---------------------------
+
+// var stack = new Stack();
+// console.log(stack.isEmpty()); // true
+// stack.push(5);
+// console.log(stack.isEmpty()); //false
+// stack.push(8);
+// stack.print();
+
+//------------------使用stack实现进制转换---------------------
+function baseTenToTwo(baseTen,base){
+	var remStack = new Stack();
+	var rem;
+	var result = '';
+	var digits = '0123456789ABCDEF';
+	while(baseTen>0){
+		rem = baseTen%base;   //余数压栈
+		remStack.push(rem);
+		baseTen = Math.floor(baseTen/base);  //商做被除数
+	}
+	while(!remStack.isEmpty())
+	{
+		result += digits[remStack.pop()];  //依次出栈
+	}
+	return result;
+}
+
+//10进制转2进制
+console.log(baseTenToTwo(10,2));  //1010
+
+//10进制转3进制
+console.log(baseTenToTwo(10,3));  //101
+
+</script>
