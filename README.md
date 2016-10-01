@@ -1,4 +1,4 @@
-<h1>javascript数据结构与算法demos</h1>
+<h1>JavaScript数据结构与算法</h1>
 <small>参考书籍《学习javascript数据结构与算法》</small>
 
 <h3>demo01: 栈的实现：进制转换</h3>
