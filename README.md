@@ -7,7 +7,7 @@
 <h3>demo02: 队列的实现：1：普通队列 2：优先队列 3：循环队列</h3>
 <a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo02/index.html" target="_blank">demo02入口</a>
 
-<h3>demo02: 链表的实现：1：单向链表 </h3>
+<h3>demo02: 链表的实现：单向链表 </h3>
 <a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo03/index.html" target="_blank">demo03入口</a>
 
 
