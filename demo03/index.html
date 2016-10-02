@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo03</title>
+</head>
+<body>
+	<h1>demo03:链表的实现(单向链表)</h1>
+	<h4>请打开调试工具(F12)</h4>
+</body>
+</html>
+<script>
+
+// -------------------【1】链表------------------------------
+function LinkedLIst(){
+	var Node = function(element){
+		this.element = element;
+		this.next = null;
+	};
+	var length = 0;
+	var head = null;
+	this.append = function(element){
+		var node = new Node(element);
+		var current; //当前节点
+		//链表为空
+		if(head == null){
+			head = node;
+		}else{
+			//遍历链表，直到找到最后一项
+			current = head;
+			while(current.next){
+				current = current.next;
+			}
+			//循环结束表明已经到达最后一个节点
+			current.next = node;
+		}
+		length++;  //更新链表长度
+	};
+
+	this.removeAt = function(position){
+		if(position>-1 && position < length){
+			var current = head;
+			var previous;
+			var index = 0;
+			if(position == 0){
+				head = current.next;
+			}else{
+				while(index++ < position){
+					previous = current;
+					current = current.next;
+				}
+				previous.next = current.next;   //核心代码
+			}
+			length--;
+			return current.element;
+		}else{
+			return null;
+		}
+	};
+
+	this.insert = function(position,element){
+		if(position>=0 && position <= length){
+			var node = new Node(element);
+			var current = head;
+			var previous;
+			var index = 0;
+			if(position == 0){
+				node.next = current;
+				head = node;
+			}else{
+				while(index++ < position){
+					previous = current;
+					current = current.next;
+				}
+				node.next = current;   //在指定位置插入元素
+				previous.next = node;
+			}
+			length--;
+			return current.element;
+		}else{
+			return null;
+		}
+	};
+	this.getHead = function(){
+		return head;
+	}
+	this.isEmpty = function(){
+		return length==0;
+	};
+	this.size = function(){
+		return length;
+	};
+	this.print = function(){
+		var current = head;
+		var string = '';
+		while(current){
+			string +=current.element + " > ";
+			current = current.next;
+		}
+		return string;
+	};
+}
+// ----------------使用链表---------------------------
+var linkedLIst = new LinkedLIst();
+linkedLIst.append('wangliguo');
+linkedLIst.append('ceshi');
+linkedLIst.append('ding');
+
+console.log(linkedLIst.print());
+console.log("被删除的是："+linkedLIst.removeAt(1));
+console.log(linkedLIst.print());
+
+console.log("插入的是："+linkedLIst.insert(1,'coco'));
+
+console.log(linkedLIst.print());
+
+</script>
