@@ -18,6 +18,9 @@
 <h3>demo05: 搜索二叉树的实现：先序遍历，中序遍历，后序遍历</h3>
 <a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo05/index.html" target="_blank">demo05入口</a>
 
+<h3>demo06: 图的实现:广度优先搜索，深度优先搜索</h3>
+<a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo06/index.html" target="_blank">demo06入口</a><code>暂未完成</code>
+
 <h2>（2）算法篇</h2>
 
 
