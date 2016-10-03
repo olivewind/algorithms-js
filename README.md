@@ -1,5 +1,5 @@
 <h1>JavaScript数据结构与算法</h1>
-<small>参考书籍《学习javascript数据结构与算法》</small>
+<small>参考书籍《学习JavaScript数据结构与算法》</small>
 
 <h2>（1）数据结构篇</h2>
 
