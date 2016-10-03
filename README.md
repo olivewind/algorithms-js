@@ -13,6 +13,9 @@
 <h3>demo04: 散列表的实现：解决散列冲突（1：分离链接 2：线性探测）</h3>
 <a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo04/index.html" target="_blank">demo04入口</a>
 
+<h3>demo05: 搜索二叉树的实现：先序,中序,后序遍历</h3>
+<a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo05/index.html" target="_blank">demo05入口</a>
+
 
 
 

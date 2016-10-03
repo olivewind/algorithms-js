@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo05</title>
+</head>
+<body>
+	<h1>demo05:树的实现</h1>
+	<h4>请打开调试工具(F12)</h4>
+</body>
+</html>
+<script>
+//--------------------二叉搜索树的实现------------------------------
+//二叉搜索树【BST】：左侧子节点存储比父节点小，右侧子节点存储比父节点大
+
+function BinarySearchTree(){
+	var Node = function(key){
+		this.key = key;
+		this.left = null;
+		this.right = null;
+	};
+	var treeRoot = null;
+	//++++++++++++++++插入节点+++++++++++++++++++++++++++
+	this.insert = function(key){
+		var newNode = new Node(key);
+		if(treeRoot == null){
+			treeRoot = newNode;
+		}else{
+			insertNode(treeRoot,newNode);
+		}
+	};
+	var insertNode = function(treeRoot,newNode){
+		if(newNode.key < treeRoot.key)  //进入左侧分支
+		{
+			if(treeRoot.left === null)  //空则直接插入
+			{
+				treeRoot.left = newNode;
+			}
+			else
+			{
+				insertNode(treeRoot.left,newNode);   //进入递归
+			}
+		}
+		else   //进入右侧分支
+		{
+			if(treeRoot.right === null)  //空则直接插入
+			{
+				treeRoot.right = newNode;
+			}
+			else
+			{
+				insertNode(treeRoot.right,newNode);   //进入递归
+			}
+		}
+	};
+	//++++++++++++++++中序遍历节点+++++++++++++++++++++++++++
+	//中序遍历节点：以上行顺序访问BST所有节点的而遍历方式，也就是以最小到最大的顺序访问所有节点
+	this.inOrderTraverse = function(callback){
+		inOrderTraverseNode(treeRoot,callback);
+	};
+	var inOrderTraverseNode = function(node,callback){
+		if(node !== null)
+		{
+			inOrderTraverseNode(node.left,callback);
+			callback(node.key);
+			inOrderTraverseNode(node.right,callback);
+		}
+	};
+	//++++++++++++++++先序遍历节点+++++++++++++++++++++++++++
+	//先序遍历节点：以优先于后代节点的顺序访问每个节点
+	this.preOrderTraverseNode = function(callback){
+		inOrderTraverseNode(treeRoot,callback);
+	};
+	var inOrderTraverseNode = function(node,callback){
+		if(node !== null)
+		{
+			callback(node.key);
+			inOrderTraverseNode(node.left,callback);
+			inOrderTraverseNode(node.right,callback);
+		}
+	};
+	//++++++++++++++++后序遍历节点+++++++++++++++++++++++++++
+	//后序遍历节点：先访问后代节点
+	this.preOrderTraverseNode = function(callback){
+		inOrderTraverseNode(treeRoot,callback);
+	};
+	var inOrderTraverseNode = function(node,callback){
+		if(node !== null)
+		{
+			inOrderTraverseNode(node.left,callback);
+			inOrderTraverseNode(node.right,callback);
+			callback(node.key);
+		}
+	};
+	//++++++++++++++++搜索最小值，最大值+++++++++++++++++++++++++++
+	this.min = function(){
+		return searchMin(treeRoot);
+	};
+	this.max = function(){
+		return searchMax(treeRoot);
+	};
+	var searchMin = function(node){
+		if(node)
+		{
+			while(node && node.left !== null)
+			{
+				node = node.left;
+			}
+			return node.key;
+
+		}
+		else
+		{
+			return null;
+		}
+	};
+	var searchMax = function(node){
+		if(node)
+		{
+			while(node && node.right !== null)
+			{
+				node = node.right;
+			}
+			return node.key;
+
+		}
+		else
+		{
+			return null;
+		}
+	};
+
+	//++++++++++++++++搜索一个特定的值++++++++++++++++++++++++++
+	this.search = function (key)
+	{
+		return searchNode(treeRoot,key);
+	};
+	var searchNode =function(node,key){
+		if(node == null)
+		{
+			return false;
+		}
+		if(key<node.key){
+			return searchNode(node.left,key);
+		}
+		else if(key > node.key){
+			return searchNode(node.right,key);
+		}
+		else
+		{
+			return true;
+		}
+	};
+
+}
+
+//-----------------使用中序遍历-------------------------------
+// function PrintNode(value){
+// 	console.log(" -> "+value);
+// }
+var tree = new BinarySearchTree();
+tree.insert(5);
+tree.insert(7);
+tree.insert(4);
+tree.insert(6);
+tree.insert(2);
+tree.insert(1);
+// console.log(tree.print());
+// tree.inOrderTraverse(PrintNode);   // 1  2  4  5  6  7
+console.log(tree.min());   // 1
+console.log(tree.max());   // 7
+console.log(tree.search(100)); //false
+console.log(tree.search(4));  //true
+
+
+
+
+</script>
