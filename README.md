@@ -7,8 +7,11 @@
 <h3>demo02: 队列的实现：1：普通队列 2：优先队列 3：循环队列</h3>
 <a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo02/index.html" target="_blank">demo02入口</a>
 
-<h3>demo02: 链表的实现：单向链表 </h3>
+<h3>demo03: 链表的实现：单向链表 </h3>
 <a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo03/index.html" target="_blank">demo03入口</a>
+
+<h3>demo04: 散列表的实现：解决散列冲突（1：分离链接 2：线性探测）</h3>
+<a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo04/index.html" target="_blank">demo03入口</a>
 
 
 
