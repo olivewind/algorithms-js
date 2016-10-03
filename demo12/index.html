@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo12</title>
+</head>
+<body>
+	<h1>demo12:搜索算法</h1>
+	<h4>请打开调试工具(F12)</h4>
+</body>
+</html>
+<script>
+
+
+var arr = [1,2,3,4,5,6,8,9,10,11,12,33,66,77];
+//---------------------------顺序搜索-----------------------
+//即遍历查找，效率较为低下
+function orderSeacrh(arr,item){
+	for(var i=0; i<arr.length;i++)
+	{
+		if(arr[i]==item)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+console.log(orderSeacrh(arr,10));   //8
+
+
+
+//---------------------------二分搜索-----------------------
+
+function binarySeacrh(arr,item){
+	var low =0 ;
+	var high = arr.length -1;
+	var mid,element;
+	while(low <= high)
+	{
+		mid = Math.floor((low+high)/2);
+		element = arr[mid];
+		if(element < item)
+		{
+			low = mid+1;
+		}
+		else if(element > item)
+		{
+			high = mid -1;
+		}
+		else{
+			return mid;
+		}
+	}
+	return -1;
+}
+
+console.log(binarySeacrh(arr,10));   //8
+
+
+</script>

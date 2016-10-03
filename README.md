@@ -26,4 +26,7 @@
 <h3>demo11: 排序算法：冒泡，选择，插入，归并，快速</h3>
 <a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo11/index.html" target="_blank">demo11入口</a>
 
+<h3>demo12: 搜索算法：顺序搜索，二分搜索</h3>
+<a href="https://github.com/olivewind/JsAlgorithms/blob/master/demo12/index.html" target="_blank">demo12入口</a>
+
 
