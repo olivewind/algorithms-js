@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo11</title>
+</head>
+<body>
+	<h1>demo11:排序算法</h1>
+	<h4>请打开调试工具(F12)</h4>
+</body>
+</html>
+<script>
+
+// ------------------创建基本类----------------------------------
+function ArrayList(){
+	var array = [];
+	this.insert = function(item){
+		array.push(item);
+	};
+	this.print = function(){
+		return array.join("->");
+	};
+	var swap = function(index1,index2){
+		var temp = array[index1];
+		array[index1] = array[index2];
+		array[index2] = temp;
+	};
+	//--------------------【1】冒泡排序[复杂度O(n~2)]------------------------------
+	this.bubbleSort = function(){
+		for (var i = 0; i < array.length; i++)
+		{
+			for (var j = 0; j < array.length-1-i; j++)   //上一次遍历后最大已被调到尾部，无需再比较
+			{
+				if(array[j] > array[j+1])
+				{
+					swap(j+1,j);
+				}
+			}
+		}
+	};
+	//--------------------【2】选择排序[复杂度O(n~2)]------------------------------
+	this.selectSort = function(){
+		var minIndex;
+		for (var i = 0; i < array.length; i++)
+		{
+			minIndex = i;
+			for (var j = i; j < array.length; j++)   //假定当前循环第一个为最小，不符合则对调
+			{
+				if(array[minIndex] > array[j]){
+					minIndex = j;
+				}
+			}
+			if(i != minIndex)
+			{
+				swap(minIndex,i);
+			}
+		}
+	};
+	//--------------------【3】插入排序[复杂度O(n~2)]------------------------------
+	this.insertSort = function(){
+		var length = array.length;
+		var j,temp;
+		for (var i = 1; i < length; i++)
+		{
+			j=i;
+			temp = array[i];
+			while(j>0 && array[j-1] >temp)
+			{
+				array[j] = array[j-1];
+				j--;
+			}
+			array[j] = temp;
+		}
+	};
+	//--------------------【4】归并排序[复杂度O(nlog~n)]------------------------------
+	this.mergeSort = function(){
+		array = mergeSortRec(array);
+	};
+	var mergeSortRec = function(array){
+		var length = array.length;
+		if(length == 1){
+			return array;
+		}
+		var mid = Math.floor(length/2);
+		var left = array.slice(0,mid);
+		var right = array.slice(mid,length);
+		return merge(mergeSortRec(left),mergeSortRec(right));
+	};
+	var merge = function(left,right){
+		var result = [];
+		var il = 0;
+		var ir = 0;
+		while(il < left.length && ir <right.length)
+		{
+			if(left[il] <right[ir])
+			{
+				result.push(left[il++]);
+			}else{
+				result.push(right[ir++]);
+			}
+		}
+		while(il < left.length)
+		{
+			result.push(left[il++]);
+		}
+		while(ir < right.length)
+		{
+			result.push(right[ir++]);
+		}
+		return result;
+	};
+	//--------------------【5】快速排序[复杂度O(n~2)]------------------------------
+	this.quickSort = function quickSort(){
+		function sort(prev, numsize){
+			var nonius = prev;
+			var j = numsize -1;
+			var flag = array[prev];
+			if ((numsize - prev) > 1)
+			{
+				while(nonius < j)
+				{
+					for(; nonius < j; j--)
+					{
+						if (array[j] < flag) {
+							array[nonius++] = array[j];　//a[i] = a[j]; i += 1;
+							break;
+						};
+					}
+					for( ; nonius < j; nonius++)
+					{
+						if (array[nonius] > flag)
+						{
+							array[j--] = array[nonius];
+							break;
+						}
+					}
+				}
+				array[nonius] = flag;
+				sort(0, nonius);
+				sort(nonius + 1, numsize);
+			}
+		}
+		sort(0, array.length);
+	};
+}
+var arr = new ArrayList();
+arr.insert(8);
+arr.insert(6);
+arr.insert(4);
+arr.insert(2);
+arr.insert(0);
+arr.insert(1);
+arr.insert(3);
+arr.insert(5);
+arr.insert(7);
+arr.insert(9);
+//++++++++++++++++++++++未调用+++++++++++++++++++++++++++++++++++
+// console.log("原始序列："+arr.print());   //8->6->4->2->0->1->3->5->7->9
+
+//++++++++++++++++++++++【1】调用冒泡排序+++++++++++++++++++++++++++++
+// arr.bubbleSort();
+// console.log("冒泡排序:"+arr.print());   //0->1->2->3->4->5->6->7->8->9
+
+
+//++++++++++++++++++++++【2】调用选择排序+++++++++++++++++++++++++++++
+// arr.selectSort();
+// console.log("选择排序:"+arr.print());   //0->1->2->3->4->5->6->7->8->9
+
+//++++++++++++++++++++++【3】调用插入排序+++++++++++++++++++++++++++++
+// arr.insertSort();
+// console.log("插入排序:"+arr.print());   //0->1->2->3->4->5->6->7->8->9
+
+//++++++++++++++++++++++【4】调用归并排序+++++++++++++++++++++++++++++
+// arr.mergeSort();
+// console.log("归并排序:"+arr.print());   //0->1->2->3->4->5->6->7->8->9
+
+//++++++++++++++++++++++【4】调用快速排序+++++++++++++++++++++++++++++
+// arr.quickSort();
+// console.log("快速排序:"+arr.print());   //0->1->2->3->4->5->6->7->8->9
+
+
+
+
+</script>
