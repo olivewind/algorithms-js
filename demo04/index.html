@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo04</title>
+</head>
+<body>
+	<h1>demo04:散列表的实现</h1>
+	<h4>请打开调试工具(F12)</h4>
+</body>
+</html>
+<script>
+//--------------------【1】散列表的实现------------------------------
+function HashTable(){
+	var table = [];
+	var loseloseHashCode = function(key)
+	{
+		var hash = 0;
+		for(var i=0; i < key.length; i++)
+		{
+			hash +=key.charCodeAt(i);
+		}
+		return hash%37;
+	}
+	this.put = function(key,value){
+		var position = loseloseHashCode(key);
+		// console.log(position + ' - ' +key);
+		table[position] = value;
+
+	};
+	this.get = function(key){
+		return table[loseloseHashCode(key)];
+	};
+	this.remove = function(key)
+	{
+		table[loseloseHashCode(key)] = undefined;
+	};
+	this.print = function(){
+		for(var i=0;i<table.length;i++)
+		{
+			if(table[i] !== undefined)
+			{
+				console.log(i+" : " + table[i]);
+			}
+		}
+	}
+}
+//-------------------使用散列表---------------------------------
+// var hash = new HashTable();
+// hash.put('wangliguo','wangliguo0594@163.com');
+// hash.put('lisi','lisi0594@163.com');
+// hash.put('zhangsan','zhangsan@163.com');
+// hash.put('liis','liis@163.com');     ///在添加这个key-valule时产生'散列冲突'
+// hash.print();
+// //console.log("key为'zhangsan'的value为："+hash.get('zhangsan'));   //zhangsan@163.com
+
+
+//-------------------解决散列冲突 之【分离链接】-----------------
+
+//在冲突位置使用链表
+
+
+//-------------------解决散列冲突 之【线性探查】-----------------
+
+//如果索引index被占据，则在index+1位置插入，若再被占，则在index+2插入，以此类推实现'线性探测'
+
+
+//-------------------解决散列冲突 之【增强散列函数】-------------------
+
+//改写索引生成函数
+
+</script>
